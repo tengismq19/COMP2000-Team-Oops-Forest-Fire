@@ -1,10 +1,16 @@
+import java.util.ArrayList;
+import java.util.List;
+
 // Represents a tree and controls its current state.
 public class Tree {
 
     private TreeState state;
+    private List<TreeState> stateHistory;
 
     public Tree() {
         state = TreeState.GREEN;
+        stateHistory = new ArrayList<>();
+        stateHistory.add(state);
     }
 
     public void burn() {
@@ -22,6 +28,7 @@ public class Tree {
     private void changeState(TreeState newState) {
         if (state.canTransitionTo(newState)) {
             state = newState;
+            stateHistory.add(state);
         }
     }
 
@@ -39,5 +46,9 @@ public class Tree {
 
     public TreeState getState() {
         return state;
+    }
+
+    public List<TreeState> getStateHistory() {
+        return new ArrayList<>(stateHistory);
     }
 }
