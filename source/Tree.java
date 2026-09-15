@@ -5,7 +5,7 @@ import java.util.List;
 public class Tree {
 
     private TreeState state;
-    private List<TreeState> stateHistory;
+    private final List<TreeState> stateHistory;
 
     public Tree() {
         state = TreeState.GREEN;
